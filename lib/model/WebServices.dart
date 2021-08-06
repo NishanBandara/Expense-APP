@@ -8,16 +8,15 @@ class HTTPRequest extends StatefulWidget {
 }
 
 class _HTTPRequestState extends State<HTTPRequest> {
-  List irrigationDataList = [];
-  Map irrigationData;
+  Map expenseData;
   bool result;
 
   Future getIrrigationData() async {
     http.Response response =
         await http.get("https://app.ceylonlinux.lk/jsonFileWrite/testapi.php");
-    irrigationData = json.decode(response.body);
+    expenseData = json.decode(response.body);
     setState(() {
-      result = irrigationData['result'];
+      result = expenseData['result'];
     });
 
     debugPrint("GET Response-" + result.toString());
